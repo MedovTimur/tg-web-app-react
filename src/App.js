@@ -15,11 +15,6 @@ function App() {
     const mnemonic = mnemonicGenerate();
     setSeedPhrase(mnemonic);
     setShowConfirmation(false);
-    onClose();
-  }
-
-  const onClose = () => {
-    tg.close();
   }
 
   const handleConfirmation = () => {
