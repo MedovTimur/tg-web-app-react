@@ -1,20 +1,52 @@
 import './App.css';
+import { Keyring } from '@polkadot/keyring';
+import { mnemonicGenerate } from '@polkadot/util-crypto';
+import React, { useState } from 'react';
+
 const tg = window.Telegram.WebApp;
 
 function App() {
+  const keyring = new Keyring();
+  const [seedPhrase, setSeedPhrase] = useState('');
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [accountAddress, setAccountAddress] = useState('');
 
-  // useEffect(() => {
-  //   tg.ready();
-  // }, [])
+  const generateSeedPhrase = () => {
+    const mnemonic = mnemonicGenerate();
+    setSeedPhrase(mnemonic);
+    setShowConfirmation(false);
+    onClose();
+  }
 
   const onClose = () => {
-    tg.close()
+    tg.close();
+  }
+
+  const handleConfirmation = () => {
+    setShowConfirmation(true);
+    const account = keyring.addFromMnemonic(seedPhrase);
+    setAccountAddress(account.address);
+    setSeedPhrase('');
   }
 
   return (
     <div className="App">
-      work
-      <button onClick={onClose}>закрыть</button>
+      {showConfirmation ? (
+        <div>
+          <p>{`Это ваш адрес: ${accountAddress}`}</p>
+        </div>
+      ) : (
+        <div>
+          {seedPhrase ? (
+            <div>
+              {seedPhrase}
+              <button onClick={handleConfirmation}>Вы сохранили сид фразу?</button>
+            </div>
+          ) : (
+            <button onClick={generateSeedPhrase}>Сгенерировать фразу</button>
+          )}
+        </div>
+      )}
     </div>
   );
 }
