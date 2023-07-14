@@ -1,5 +1,5 @@
 import './App.css';
-import { Keyring } from '@polkadot/keyring';
+import { Keyring } from '@polkadot/api';
 import { mnemonicGenerate } from '@polkadot/util-crypto';
 import React, { useState } from 'react';
 
