@@ -40,10 +40,10 @@ function App() {
           {seedPhrase ? (
             <div>
               {seedPhrase}
-              <button onClick={handleConfirmation}>Вы сохранили сид фразу?</button>
+              <button type="button" onClick={handleConfirmation}>Вы сохранили сид фразу?</button>
             </div>
           ) : (
-            <button onClick={generateSeedPhrase}>Сгенерировать фразу</button>
+            <button type="button" onClick={generateSeedPhrase}>Сгенерировать фразу</button>
           )}
         </div>
       )}
