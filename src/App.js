@@ -3,7 +3,7 @@ import { Keyring } from '@polkadot/api';
 import { mnemonicGenerate } from '@polkadot/util-crypto';
 import React, { useState } from 'react';
 
-const tg = window.Telegram.WebApp;
+//const tg = window.Telegram.WebApp;
 
 function App() {
   const keyring = new Keyring();
