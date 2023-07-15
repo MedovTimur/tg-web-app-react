@@ -28,22 +28,29 @@ function App() {
     <div className="App">
       {showConfirmation ? (
         <div>
-          <p>{`Это ваш адрес: ${accountAddress}`}</p>
+          <p>
+            Send your substrate address to the bot:
+            <br />
+            {accountAddress}
+          </p>
         </div>
       ) : (
         <div>
           {seedPhrase ? (
             <div>
               {seedPhrase}
-              <button type="button" onClick={handleConfirmation}>Вы сохранили сид фразу?</button>
+              <button type="button" onClick={handleConfirmation} style={{ display: 'block', marginTop: '10px' }}>
+                Click, if you have saved the seed phrase
+              </button>
             </div>
           ) : (
-            <button type="button" onClick={generateSeedPhrase}>Сгенерировать фразу</button>
+            <button type="button" onClick={generateSeedPhrase}>Сlick to generate a seed phrase</button>
           )}
         </div>
       )}
     </div>
   );
+  
 }
 
 export default App;
